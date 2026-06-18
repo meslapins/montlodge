@@ -1,0 +1,2517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mont Lodge - Lodge de Montagne | Côte d'Ivoire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-dark: #1a2e1f;
+            --forest: #2d4a2f;
+            --forest-light: #3d5a35;
+            --warm-wood: #8b6914;
+            --cream: #f5f0e8;
+            --white: #ffffff;
+            --gold: #c9a84c;
+            --text-dark: #2c2c2c;
+            --text-light: #5c5c5c;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+            --radius: 6px;
+            --radius-sm: 4px;
+            --transition: all 0.25s ease;
+            --whatsapp-green: #1a8c3f;
+            --whatsapp-dark: #147032;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lora', Georgia, 'Times New Roman', serif;
+            font-weight: 400;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
+        h1,
+        h2,
+        h3,
+        .nav-logo,
+        .section-header h2,
+        .room-info h3,
+        .amenity-item h4,
+        .review-card .reviewer,
+        .contact-form h3,
+        .footer-col h4,
+        .price-amount,
+        .hero-subtitle {
+            font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+        }
+        .hero h1 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .section-header h2 {
+            font-weight: 700;
+        }
+        .room-info h3 {
+            font-weight: 700;
+        }
+        .nav-logo {
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .hero-subtitle {
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+        .price-amount {
+            font-weight: 700;
+        }
+        .badge,
+        .amenity-item h4,
+        .amenity-item p,
+        .form-group label,
+        .room-features span,
+        .btn-primary,
+        .btn-whatsapp-sm,
+        .btn-submit,
+        .nav-cta,
+        .email-fallback,
+        .rooms-email-fallback {
+            font-family: 'Lora', Georgia, 'Times New Roman', serif;
+        }
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        .gallery-item:focus-visible,
+        .room-option:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        .btn-primary:focus-visible,
+        .btn-whatsapp-sm:focus-visible,
+        .btn-submit:focus-visible,
+        .nav-cta:focus-visible {
+            outline-color: var(--gold);
+            outline-offset: 4px;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 1000;
+            background: var(--whatsapp-green);
+            color: white;
+            width: 54px;
+            height: 54px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 14px rgba(26, 140, 63, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 140, 63, 0.4);
+            background: var(--whatsapp-dark);
+        }
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            padding: 20px 40px;
+            transition: var(--transition);
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid transparent;
+        }
+        nav.scrolled {
+            background: rgba(26, 46, 31, 0.95);
+            padding: 12px 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .nav-logo {
+            font-size: 1.6rem;
+            color: var(--white);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+            font-family: 'Lora', serif;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .lang-toggle {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .lang-toggle button {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Lora', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+        }
+        .lang-toggle button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--forest-dark);
+        }
+        .lang-toggle button:hover {
+            border-color: var(--white);
+            color: var(--white);
+        }
+        .lang-toggle button.active:hover {
+            background: var(--gold);
+            color: var(--forest-dark);
+        }
+        nav.scrolled .lang-toggle button {
+            border-color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        nav.scrolled .lang-toggle button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--forest-dark);
+        }
+        nav.scrolled .lang-toggle button:hover {
+            border-color: var(--white);
+            color: var(--white);
+        }
+        .nav-cta {
+            background: var(--whatsapp-green) !important;
+            color: var(--white) !important;
+            padding: 10px 22px !important;
+            border-radius: var(--radius) !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            text-shadow: none !important;
+            box-shadow: 0 2px 8px rgba(26, 140, 63, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        nav.scrolled .nav-cta {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .nav-cta:hover {
+            background: var(--whatsapp-dark) !important;
+            color: var(--white) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(26, 140, 63, 0.3);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.35);
+            border: none;
+            padding: 8px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        .hamburger:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
+                url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+        .hero-content {
+            max-width: 700px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        .hero h1 {
+            font-size: 3.6rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+        .scroll-indicator:hover {
+            color: var(--gold);
+        }
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+        }
+        .btn-primary,
+        .btn-whatsapp-sm,
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Lora', serif;
+            line-height: 1;
+        }
+        .btn-primary {
+            background: var(--forest);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(26, 46, 31, 0.2);
+        }
+        .btn-primary:hover {
+            background: var(--forest-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(26, 46, 31, 0.3);
+        }
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
+        }
+        .btn-email {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: none;
+        }
+        .btn-email:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            color: var(--white);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        .btn-whatsapp,
+        .btn-whatsapp-sm {
+            background: var(--whatsapp-green);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(26, 140, 63, 0.2);
+        }
+        .btn-whatsapp:hover,
+        .btn-whatsapp-sm:hover {
+            background: var(--whatsapp-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(26, 140, 63, 0.3);
+        }
+        .btn-whatsapp svg,
+        .btn-whatsapp-sm svg {
+            width: 18px;
+            height: 18px;
+        }
+        .btn-submit {
+            background: var(--forest);
+            color: var(--white);
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(26, 46, 31, 0.15);
+        }
+        .btn-submit:hover {
+            background: var(--forest-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(26, 46, 31, 0.25);
+        }
+        .mobile-sticky-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 998;
+            background: var(--white);
+            padding: 12px 16px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+            gap: 10px;
+            align-items: center;
+        }
+        .mobile-sticky-bar .btn-primary,
+        .mobile-sticky-bar .btn-whatsapp-sm {
+            flex: 1;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+        }
+        .mobile-sticky-bar .btn-email-sticky {
+            flex: 0 0 auto;
+            background: transparent;
+            border: 1.5px solid var(--forest);
+            color: var(--forest);
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition);
+            font-family: 'Lora', serif;
+            white-space: nowrap;
+        }
+        .mobile-sticky-bar .btn-email-sticky:hover {
+            background: var(--forest);
+            color: var(--white);
+        }
+        section {
+            padding: 90px 40px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 2.6rem;
+            color: var(--forest-dark);
+            margin-bottom: 12px;
+        }
+        .section-header .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0 auto 16px;
+            border-radius: 2px;
+        }
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            font-family: 'Lora', serif;
+            font-weight: 400;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            object-fit: cover;
+            height: 450px;
+        }
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--forest-dark);
+            margin-bottom: 18px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            font-family: 'Lora', serif;
+            font-weight: 400;
+        }
+        .feature-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .badge {
+            background: var(--white);
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--forest);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'Lora', serif;
+        }
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .room-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+        .room-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .room-card:hover img {
+            filter: brightness(1.05);
+        }
+        .room-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .room-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--gold);
+            color: var(--forest-dark);
+            padding: 6px 14px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            font-family: 'Lora', serif;
+            z-index: 2;
+        }
+        .room-info {
+            padding: 25px;
+        }
+        .room-info h3 {
+            font-size: 1.4rem;
+            color: var(--forest-dark);
+            margin-bottom: 8px;
+        }
+        .price {
+            font-size: 1.3rem;
+            color: var(--warm-wood);
+            margin-bottom: 12px;
+        }
+        .price-amount {
+            font-size: 1.3rem;
+            color: var(--warm-wood);
+        }
+        .price-per {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-light);
+            font-family: 'Lora', serif;
+        }
+        .room-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .room-features span {
+            font-size: 0.85rem;
+            background: var(--cream);
+            padding: 5px 12px;
+            border-radius: 3px;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+        .room-actions .btn-whatsapp-sm {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+        }
+        .rooms-email-fallback {
+            text-align: center;
+            margin-top: 35px;
+            font-size: 1rem;
+            color: var(--text-light);
+            font-family: 'Lora', serif;
+        }
+        .rooms-email-fallback a {
+            color: var(--forest);
+            font-weight: 700;
+            text-decoration: underline;
+            transition: var(--transition);
+        }
+        .rooms-email-fallback a:hover {
+            color: var(--warm-wood);
+        }
+        .amenities-bg {
+            background: var(--forest-dark);
+            color: var(--white);
+        }
+        .amenities-bg .section-header h2 {
+            color: var(--white);
+        }
+        .amenities-bg .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+        .amenity-item {
+            padding: 28px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .amenity-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        .amenity-icon {
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+        .amenity-item h4 {
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+            font-family: 'Lora', serif;
+            font-weight: 600;
+        }
+        .amenity-item p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            font-family: 'Lora', serif;
+            font-weight: 400;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            aspect-ratio: 4/3;
+            position: relative;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: var(--transition);
+        }
+        .gallery-item:hover::after {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 4px;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 2001;
+            font-family: 'Lora', serif;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: var(--gold);
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 2001;
+            background: rgba(0, 0, 0, 0.4);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-family: 'Lora', serif;
+        }
+        .lightbox-nav:hover {
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--gold);
+        }
+        .lightbox-prev {
+            left: 20px;
+        }
+        .lightbox-next {
+            right: 20px;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .review-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-left: 3px solid var(--cream);
+        }
+        .review-stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .review-verified {
+            font-size: 0.8rem;
+            color: var(--forest);
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-family: 'Lora', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .review-card p {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-family: 'Lora', serif;
+            font-weight: 400;
+        }
+        .reviewer-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 4px;
+            background: var(--forest);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0 auto 8px;
+            font-family: 'Lora', serif;
+        }
+        .review-card .reviewer {
+            font-weight: 700;
+            color: var(--forest-dark);
+            font-size: 0.95rem;
+        }
+        .review-card .reviewer-location {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-family: 'Lora', serif;
+        }
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 420px;
+            background: #e0d5c5;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-light);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            font-family: 'Lora', serif;
+        }
+        .map-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .contact-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .contact-form h3 {
+            font-size: 1.4rem;
+            color: var(--forest-dark);
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #ddd5c8;
+            border-radius: var(--radius-sm);
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--cream);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--forest);
+            background: white;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .contact-details {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+            font-family: 'Lora', serif;
+        }
+        .contact-details a {
+            color: var(--forest);
+            font-weight: 600;
+        }
+        .mailto-note {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            text-align: center;
+            font-family: 'Lora', serif;
+        }
+        footer {
+            background: var(--forest-dark);
+            color: var(--white);
+            padding: 60px 40px 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+        }
+        .footer-col p,
+        .footer-col li {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            list-style: none;
+            font-family: 'Lora', serif;
+            font-weight: 400;
+        }
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+        .footer-logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+        .footer-logo span {
+            color: var(--gold);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            font-family: 'Lora', serif;
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 75%;
+            max-width: 340px;
+            height: 100vh;
+            background: var(--forest-dark);
+            z-index: 1002;
+            padding: 80px 30px 30px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            font-family: 'Lora', serif;
+        }
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+        .mobile-lang-toggle {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mobile-lang-toggle button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.75rem;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Lora', serif;
+            transition: var(--transition);
+            padding: 0;
+            line-height: 1;
+        }
+        .mobile-lang-toggle button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--forest-dark);
+        }
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            display: none;
+        }
+        .mobile-overlay.active {
+            display: block;
+        }
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .modal {
+            background: var(--white);
+            border-radius: var(--radius);
+            max-width: 620px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .modal-close {
+            position: sticky;
+            top: 14px;
+            float: right;
+            right: 18px;
+            background: var(--white);
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            z-index: 10;
+            line-height: 1;
+            padding: 4px 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-family: 'Lora', serif;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .modal-close:hover {
+            background: var(--cream);
+            color: var(--text-dark);
+        }
+        .modal-header {
+            padding: 30px 30px 0;
+        }
+        .modal-header h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--forest-dark);
+            margin-bottom: 4px;
+        }
+        .modal-header .modal-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-family: 'Lora', serif;
+        }
+        .modal-step {
+            padding: 0 30px 30px;
+        }
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-family: 'Lora', serif;
+            margin-bottom: 16px;
+        }
+        .step-indicator .step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd5c8;
+        }
+        .step-indicator .step-dot.active {
+            background: var(--forest);
+        }
+        .step-indicator .step-dot.done {
+            background: var(--gold);
+        }
+        .room-selector-label {
+            margin-bottom: 8px;
+            font-family: 'Lora', serif;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .room-selector-hint {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 14px;
+            font-family: 'Lora', serif;
+            font-style: italic;
+        }
+        .room-selector-scroll {
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 4px;
+            margin-bottom: 16px;
+        }
+        .room-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+        .room-option {
+            border: 2px solid #e8e0d5;
+            border-radius: var(--radius);
+            padding: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            background: var(--white);
+        }
+        .room-option:hover {
+            border-color: var(--forest-light);
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+        .room-option.selected {
+            border-color: var(--forest);
+            background: rgba(45, 74, 47, 0.04);
+            box-shadow: 0 0 0 3px rgba(45, 74, 47, 0.1);
+        }
+        .room-option img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        .room-option h4 {
+            font-size: 0.9rem;
+            color: var(--forest-dark);
+            font-family: 'Merriweather', serif;
+            margin-bottom: 2px;
+        }
+        .room-option .room-option-price {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--warm-wood);
+            font-family: 'Lora', serif;
+        }
+        .room-option-check {
+            display: none;
+            color: var(--forest);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 4px;
+            font-family: 'Lora', serif;
+        }
+        .room-option.selected .room-option-check {
+            display: block;
+        }
+        .btn-continue-fixed {
+            position: sticky;
+            bottom: 0;
+            background: var(--white);
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+        }
+        .modal-room-preview {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin: 0 0 8px;
+        }
+        .modal-room-preview img {
+            width: 120px;
+            height: 85px;
+            object-fit: cover;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        .modal-room-details h3 {
+            font-size: 1.2rem;
+            color: var(--forest-dark);
+            margin-bottom: 2px;
+            font-family: 'Merriweather', serif;
+        }
+        .modal-room-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--warm-wood);
+            font-family: 'Lora', serif;
+        }
+        .modal-room-price small {
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        .change-room-link {
+            display: inline-block;
+            margin-top: 2px;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+            color: var(--forest);
+            cursor: pointer;
+            text-decoration: underline;
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        .change-room-link:hover {
+            color: var(--warm-wood);
+        }
+        .room-selector-step {
+            display: none;
+        }
+        .room-selector-step.active {
+            display: block;
+        }
+        .booking-form-step {
+            display: none;
+        }
+        .booking-form-step.active {
+            display: block;
+        }
+        .form-section-title {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--forest-dark);
+            margin-bottom: 14px;
+            margin-top: 6px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--cream);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .modal .form-group {
+            margin-bottom: 16px;
+        }
+        .modal .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-family: 'Lora', serif;
+        }
+        .modal .form-group input,
+        .modal .form-group select,
+        .modal .form-group textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid #ddd5c8;
+            border-radius: 4px;
+            font-family: 'Lora', serif;
+            font-size: 0.95rem;
+            background: var(--cream);
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
+        .modal .form-group input:focus,
+        .modal .form-group select:focus,
+        .modal .form-group textarea:focus {
+            outline: none;
+            border-color: var(--forest);
+            background: white;
+        }
+        .modal .form-group input[type="date"]::placeholder {
+            color: var(--text-light);
+            font-family: 'Lora', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .modal .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235c5c5c' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            cursor: pointer;
+        }
+        .date-hint {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 3px;
+            font-family: 'Lora', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .capacity-warning {
+            font-size: 0.8rem;
+            color: #c0392b;
+            margin-top: 6px;
+            font-family: 'Lora', serif;
+            display: none;
+        }
+        .capacity-warning.visible {
+            display: block;
+        }
+        .price-note {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+            font-family: 'Lora', serif;
+            margin-bottom: 4px;
+        }
+        .price-summary {
+            background: var(--cream);
+            border-radius: 4px;
+            padding: 16px;
+            margin: 20px 0 16px;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 6px;
+            font-family: 'Lora', serif;
+        }
+        .summary-total {
+            font-weight: 700;
+            color: var(--forest-dark);
+            font-size: 1.1rem;
+            border-top: 1px solid #ddd5c8;
+            padding-top: 10px;
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+        .btn-block {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+        }
+        .btn-block:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .modal-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-family: 'Lora', serif;
+        }
+        @media (max-width: 1024px) {
+            section {
+                padding: 70px 30px;
+            }
+            .about-grid,
+            .location-grid {
+                gap: 40px;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            nav {
+                padding: 16px 24px;
+                gap: 14px;
+            }
+            nav.scrolled {
+                padding: 10px 24px;
+            }
+            .nav-links {
+                gap: 16px;
+            }
+            .nav-links a {
+                font-size: 0.88rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-right {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero {
+                min-height: 100vh;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+            }
+            section {
+                padding: 50px 18px;
+            }
+            .about-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-img {
+                height: 280px;
+            }
+            .section-header h2 {
+                font-size: 1.9rem;
+            }
+            .section-header p {
+                font-size: 0.95rem;
+            }
+            .whatsapp-float {
+                display: none;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-buttons .btn-primary {
+                width: 100%;
+                max-width: 300px;
+            }
+            .rooms-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+            .amenities-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .map-placeholder {
+                height: 280px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.8rem;
+            }
+            .lightbox-prev {
+                left: 8px;
+            }
+            .lightbox-next {
+                right: 8px;
+            }
+            .mobile-sticky-bar {
+                display: flex;
+            }
+            body {
+                padding-bottom: 70px;
+            }
+            .modal-overlay {
+                padding: 0;
+                align-items: flex-end;
+            }
+            .modal {
+                max-height: 92vh;
+                border-radius: var(--radius) var(--radius) 0 0;
+                animation: slideUpMobile 0.3s ease;
+            }
+            @keyframes slideUpMobile {
+                from {
+                    transform: translateY(100%);
+                }
+                to {
+                    transform: translateY(0);
+                }
+            }
+            .modal-header {
+                padding: 24px 20px 0;
+            }
+            .modal-step {
+                padding: 0 20px 24px;
+            }
+            .modal-room-preview {
+                flex-direction: column;
+                text-align: center;
+            }
+            .modal-room-preview img {
+                width: 100%;
+                height: 140px;
+            }
+            .room-selector {
+                grid-template-columns: 1fr;
+            }
+            .room-option {
+                display: flex;
+                gap: 12px;
+                align-items: center;
+                text-align: left;
+                padding: 12px;
+            }
+            .room-option img {
+                width: 70px;
+                height: 55px;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+            .room-selector-scroll {
+                max-height: 260px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .lang-toggle button {
+                width: 32px;
+                height: 32px;
+                font-size: 0.7rem;
+            }
+        }
+        @media (max-width: 400px) {
+            .amenities-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#" class="whatsapp-float" id="whatsappFloat" target="_blank" aria-label="Réserver via WhatsApp" data-fr-aria="Réserver via WhatsApp" data-en-aria="Book via WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+    </a>
+
+    <div class="mobile-sticky-bar" id="mobileStickyBar">
+        <a href="#" class="btn-primary btn-whatsapp mobile-whatsapp-btn">
+            <svg viewBox="0 0 24 24" fill="white" width="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            <span data-fr="WhatsApp" data-en="WhatsApp">WhatsApp</span>
+        </a>
+        <a href="#contactForm" class="btn-email-sticky" data-fr="Email" data-en="Email">Email</a>
+    </div>
+
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+        <a href="#accueil" onclick="closeMenu()" data-fr="Accueil" data-en="Home">Accueil</a>
+        <a href="#apropos" onclick="closeMenu()" data-fr="À Propos" data-en="About">À Propos</a>
+        <a href="#chambres" onclick="closeMenu()" data-fr="Chambres" data-en="Rooms">Chambres</a>
+        <a href="#contact" onclick="closeMenu()" data-fr="Contact" data-en="Contact">Contact</a>
+        <a href="#" class="nav-cta mobile-book-btn" style="display:inline-block;text-align:center;" data-fr="Réserver" data-en="Book Now">Réserver</a>
+        <div class="mobile-lang-toggle">
+            <button class="active" onclick="switchLang('fr'); closeMenu();" id="btn-fr-mobile" aria-label="Français">FR</button>
+            <button onclick="switchLang('en'); closeMenu();" id="btn-en-mobile" aria-label="English">EN</button>
+        </div>
+    </div>
+
+    <nav id="navbar" role="navigation" aria-label="Navigation principale">
+        <div class="nav-logo">Mont<span>Lodge</span></div>
+        <ul class="nav-links">
+            <li><a href="#accueil" data-fr="Accueil" data-en="Home">Accueil</a></li>
+            <li><a href="#apropos" data-fr="À Propos" data-en="About">À Propos</a></li>
+            <li><a href="#chambres" data-fr="Chambres" data-en="Rooms">Chambres</a></li>
+            <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <button class="active" onclick="switchLang('fr')" id="btn-fr" aria-label="Français" title="Français">FR</button>
+                <button onclick="switchLang('en')" id="btn-en" aria-label="English" title="English">EN</button>
+            </div>
+            <a href="#" class="nav-cta nav-book-btn" data-fr="Réserver" data-en="Book Now">Réserver</a>
+        </div>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu de navigation" data-fr-aria="Menu de navigation" data-en-aria="Navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main role="main">
+
+        <section class="hero" id="accueil">
+            <div class="hero-content">
+                <p class="hero-subtitle" data-fr="Côte d'Ivoire • Montagnes" data-en="Côte d'Ivoire • Mountains">Côte d'Ivoire • Montagnes</p>
+                <h1 data-fr="Votre Évasion au Cœur des Montagnes" data-en="Your Escape in the Heart of the Mountains">Votre Évasion au Cœur des Montagnes</h1>
+                <p data-fr="Vivez une expérience authentique dans notre lodge niché dans les montagnes ivoiriennes. Nature, confort et sérénité vous attendent." data-en="Experience authentic mountain lodge living in the Ivorian highlands. Nature, comfort, and serenity await you.">Vivez une expérience authentique dans notre lodge niché dans les montagnes ivoiriennes. Nature, confort et sérénité vous attendent.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary btn-whatsapp hero-whatsapp-btn">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                        <span data-fr="Réserver via WhatsApp" data-en="Book via WhatsApp">Réserver via WhatsApp</span>
+                    </a>
+                    <a href="#contactForm" class="btn-primary btn-email">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+                        <span data-fr="Réserver par Email" data-en="Book via Email">Réserver par Email</span>
+                    </a>
+                </div>
+            </div>
+            <button class="scroll-indicator" onclick="document.getElementById('apropos').scrollIntoView({behavior:'smooth'})" aria-label="Défiler vers la section suivante" data-fr-aria="Défiler vers la section suivante" data-en-aria="Scroll to next section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5"/><path d="M7 6l5 5 5-5"/></svg>
+            </button>
+        </section>
+
+        <section id="apropos">
+            <div class="container">
+                <div class="about-grid">
+                    <img src="https://unsplash.com/fr/photos/lit-noir-et-blanc-pres-dune-table-en-bois-marron-T5pL6ciEn-I" alt="Vue extérieure du Mont Lodge, lodge de montagne en Côte d'Ivoire" class="about-img" loading="lazy">
+                    <div class="about-text">
+                        <div class="section-header" style="text-align:left;margin-bottom:20px;">
+                            <h2 data-fr="Notre Histoire" data-en="Our Story">Notre Histoire</h2>
+                            <div class="divider" style="margin:0 0 16px 0;"></div>
+                        </div>
+                        <p data-fr="Perché dans les montagnes de Côte d'Ivoire, Mont Lodge est né d'une passion pour la nature et l'hospitalité africaine authentique. Nous offrons un refuge paisible loin du tumulte de la ville, où chaque lever de soleil sur les crêtes vous rappelle la beauté brute de notre pays." data-en="Perched in the mountains of Côte d'Ivoire, Mont Lodge was born from a passion for nature and authentic African hospitality. We offer a peaceful refuge away from the city's hustle, where every sunrise over the ridges reminds you of our country's raw beauty.">Perché dans les montagnes de Côte d'Ivoire, Mont Lodge est né d'une passion pour la nature et l'hospitalité africaine authentique. Nous offrons un refuge paisible loin du tumulte de la ville, où chaque lever de soleil sur les crêtes vous rappelle la beauté brute de notre pays.</p>
+                        <p data-fr="Avec seulement quelques chambres soigneusement aménagées, nous privilégions la qualité et l'attention personnalisée pour chaque visiteur." data-en="With just a few carefully appointed rooms, we prioritize quality and personalized attention for every guest.">Avec seulement quelques chambres soigneusement aménagées, nous privilégions la qualité et l'attention personnalisée pour chaque visiteur.</p>
+                        <div class="feature-badges">
+                            <span class="badge">🌿 <span data-fr="Éco-responsable" data-en="Eco-friendly">Éco-responsable</span></span>
+                            <span class="badge">🏔️ <span data-fr="Vue Panoramique" data-en="Panoramic View">Vue Panoramique</span></span>
+                            <span class="badge">🍽️ <span data-fr="Cuisine Locale" data-en="Local Cuisine">Cuisine Locale</span></span>
+                            <span class="badge">🔒 <span data-fr="Sécurisé" data-en="Secure">Sécurisé</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chambres" style="background:#fff;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-fr="Nos Chambres" data-en="Our Rooms">Nos Chambres</h2>
+                    <div class="divider"></div>
+                    <p data-fr="Des espaces pensés pour votre confort, alliant charme rustique et commodités modernes." data-en="Spaces designed for your comfort, blending rustic charm with modern amenities.">Des espaces pensés pour votre confort, alliant charme rustique et commodités modernes.</p>
+                </div>
+                <div class="rooms-grid">
+                    <div class="room-card" data-room="1">
+                        <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80" alt="Chambre Montagne avec vue" loading="lazy">
+                        <div class="room-info">
+                            <h3 data-fr="Chambre Montagne" data-en="Mountain Room">Chambre Montagne</h3>
+                            <p class="price"><span class="price-amount" data-fr="25 000 FCFA" data-en="25,000 XOF">25 000 FCFA</span> <span class="price-per" data-fr="/ nuit" data-en="/ night">/ nuit</span></p>
+                            <div class="room-features">
+                                <span data-fr="1 Lit Double" data-en="1 Double Bed">1 Lit Double</span>
+                                <span data-fr="Douche" data-en="Shower">Douche</span>
+                                <span data-fr="Vue Montagne" data-en="Mountain View">Vue Montagne</span>
+                            </div>
+                            <div class="room-actions">
+                                <a href="#" class="btn-whatsapp-sm room-book-1">
+                                    <svg viewBox="0 0 24 24" fill="white" width="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                                    <span data-fr="Réserver" data-en="Book">Réserver</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-card" data-room="2">
+                        <span class="room-badge" data-fr="Meilleur Rapport Qualité-Prix" data-en="Best Value">Meilleur Rapport Qualité-Prix</span>
+                        <img src="https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&q=80" alt="Suite Lodge avec cheminée" loading="lazy">
+                        <div class="room-info">
+                            <h3 data-fr="Suite Lodge" data-en="Lodge Suite">Suite Lodge</h3>
+                            <p class="price"><span class="price-amount" data-fr="45 000 FCFA" data-en="45,000 XOF">45 000 FCFA</span> <span class="price-per" data-fr="/ nuit" data-en="/ night">/ nuit</span></p>
+                            <div class="room-features">
+                                <span data-fr="1 Grand Lit" data-en="1 King Bed">1 Grand Lit</span>
+                                <span data-fr="Salon" data-en="Living Room">Salon</span>
+                                <span data-fr="Cheminée" data-en="Fireplace">Cheminée</span>
+                                <span data-fr="Terrasse" data-en="Terrace">Terrasse</span>
+                            </div>
+                            <div class="room-actions">
+                                <a href="#" class="btn-whatsapp-sm room-book-2">
+                                    <svg viewBox="0 0 24 24" fill="white" width="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                                    <span data-fr="Réserver" data-en="Book">Réserver</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-card" data-room="3">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Chambre Familiale avec jardin" loading="lazy">
+                        <div class="room-info">
+                            <h3 data-fr="Chambre Familiale" data-en="Family Room">Chambre Familiale</h3>
+                            <p class="price"><span class="price-amount" data-fr="60 000 FCFA" data-en="60,000 XOF">60 000 FCFA</span> <span class="price-per" data-fr="/ nuit" data-en="/ night">/ nuit</span></p>
+                            <div class="room-features">
+                                <span data-fr="2 Lits" data-en="2 Beds">2 Lits</span>
+                                <span data-fr="4 Pers." data-en="4 Guests">4 Pers.</span>
+                                <span data-fr="Jardin Privé" data-en="Private Garden">Jardin Privé</span>
+                            </div>
+                            <div class="room-actions">
+                                <a href="#" class="btn-whatsapp-sm room-book-3">
+                                    <svg viewBox="0 0 24 24" fill="white" width="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                                    <span data-fr="Réserver" data-en="Book">Réserver</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rooms-email-fallback">
+                    <p>
+                        <span data-fr="Vous préférez réserver par email ? " data-en="Prefer to book via email? ">Vous préférez réserver par email ? </span>
+                        <a href="#" id="roomsEmailLink" data-fr="Écrivez-nous ici" data-en="Write to us here">Écrivez-nous ici</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="amenities-bg">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-fr="Équipements & Expériences" data-en="Amenities & Experiences">Équipements & Expériences</h2>
+                    <div class="divider"></div>
+                    <p data-fr="Tout ce dont vous avez besoin pour un séjour inoubliable en pleine nature." data-en="Everything you need for an unforgettable stay in the heart of nature.">Tout ce dont vous avez besoin pour un séjour inoubliable en pleine nature.</p>
+                </div>
+                <div class="amenities-grid">
+                    <div class="amenity-item"><div class="amenity-icon">🔥</div><h4 data-fr="Cheminée" data-en="Fireplace">Cheminée</h4><p data-fr="Soirées chaleureuses" data-en="Cozy evenings">Soirées chaleureuses</p></div>
+                    <div class="amenity-item"><div class="amenity-icon">🥾</div><h4 data-fr="Randonnées" data-en="Hiking">Randonnées</h4><p data-fr="Sentiers balisés" data-en="Marked trails">Sentiers balisés</p></div>
+                    <div class="amenity-item"><div class="amenity-icon">🌌</div><h4 data-fr="Observation d'étoiles" data-en="Stargazing">Observation d'étoiles</h4><p data-fr="Ciel dégagé" data-en="Clear skies">Ciel dégagé</p></div>
+                    <div class="amenity-item"><div class="amenity-icon">🍽️</div><h4 data-fr="Cuisine Ivoirienne" data-en="Ivorian Cuisine">Cuisine Ivoirienne</h4><p data-fr="Produits locaux" data-en="Local products">Produits locaux</p></div>
+                    <div class="amenity-item"><div class="amenity-icon">🏕️</div><h4 data-fr="Feu de Camp" data-en="Campfire">Feu de Camp</h4><p data-fr="Veillées guidées" data-en="Guided evenings">Veillées guidées</p></div>
+                    <div class="amenity-item"><div class="amenity-icon">📶</div><h4 data-fr="Wi-Fi" data-en="Wi-Fi">Wi-Fi</h4><p data-fr="Zones communes" data-en="Common areas">Zones communes</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galerie">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-fr="Galerie" data-en="Gallery">Galerie</h2>
+                    <div class="divider"></div>
+                    <p data-fr="Un aperçu de la beauté qui vous attend." data-en="A glimpse of the beauty that awaits you.">Un aperçu de la beauté qui vous attend.</p>
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Vue panoramique des montagnes" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=600&q=80" alt="Intérieur chaleureux du lodge" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80" alt="Sentier de randonnée" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=600&q=80" alt="Rivière de montagne" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1414016642750-7fdd78dc33d9?w=600&q=80" alt="Feu de camp au crépuscule" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1529693662653-9d480530a697?w=600&q=80" alt="Plat de cuisine ivoirienne" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="avis" style="background:#fff;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-fr="Avis Clients" data-en="Guest Reviews">Avis Clients</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <div class="review-verified">✓ <span data-fr="Séjour Vérifié" data-en="Verified Stay">Séjour Vérifié</span></div>
+                        <p data-fr="Un séjour magique! Le personnel est incroyablement accueillant et la vue est à couper le souffle." data-en="A magical stay! The staff is incredibly welcoming and the view is breathtaking.">"Un séjour magique! Le personnel est incroyablement accueillant et la vue est à couper le souffle."</p>
+                        <div class="reviewer-avatar">AK</div>
+                        <div class="reviewer">Aminata K.</div>
+                        <div class="reviewer-location">Abidjan</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <div class="review-verified">✓ <span data-fr="Séjour Vérifié" data-en="Verified Stay">Séjour Vérifié</span></div>
+                        <p data-fr="Parfait pour déconnecter. Les randonnées guidées étaient exceptionnelles. Je reviendrai!" data-en="Perfect for disconnecting. The guided hikes were exceptional. I'll be back!">"Parfait pour déconnecter. Les randonnées guidées étaient exceptionnelles. Je reviendrai!"</p>
+                        <div class="reviewer-avatar">JB</div>
+                        <div class="reviewer">Jean-Marc B.</div>
+                        <div class="reviewer-location">Yamoussoukro</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <div class="review-verified">✓ <span data-fr="Séjour Vérifié" data-en="Verified Stay">Séjour Vérifié</span></div>
+                        <p data-fr="La cuisine ivoirienne servie ici est la meilleure que j'aie goûtée. Le cadre est idyllique." data-en="The Ivorian cuisine served here is the best I've tasted. The setting is idyllic.">"La cuisine ivoirienne servie ici est la meilleure que j'aie goûtée. Le cadre est idyllique."</p>
+                        <div class="reviewer-avatar">FD</div>
+                        <div class="reviewer">Fatou D.</div>
+                        <div class="reviewer-location">Grand-Bassam</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-fr="Contact & Localisation" data-en="Contact & Location">Contact & Localisation</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="location-grid">
+                    <div class="map-placeholder" id="mapContainer">
+                        <span data-fr="Carte en chargement..." data-en="Loading map...">Carte en chargement...</span>
+                    </div>
+                    <div>
+                        <div class="contact-form" id="contactForm">
+                            <h3 data-fr="Envoyez-nous un message" data-en="Send us a message">Envoyez-nous un message</h3>
+                            <div class="form-group">
+                                <label data-fr="Nom complet" data-en="Full Name">Nom complet</label>
+                                <input type="text" id="formName" data-fr="Votre nom" data-en="Your name" placeholder="Votre nom">
+                            </div>
+                            <div class="form-group">
+                                <label data-fr="Email" data-en="Email">Email</label>
+                                <input type="email" id="formEmail" placeholder="votre@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label data-fr="Message" data-en="Message">Message</label>
+                                <textarea id="formMessage" data-fr="Votre message..." data-en="Your message..." placeholder="Votre message..."></textarea>
+                            </div>
+                            <button class="btn-submit" onclick="sendEmail()" data-fr="Envoyer le message" data-en="Send Message">Envoyer le message</button>
+                            <p class="mailto-note"><span data-fr="Si votre client email ne s'ouvre pas, écrivez-nous directement à " data-en="If your email client doesn't open, write to us directly at ">Si votre client email ne s'ouvre pas, écrivez-nous directement à </span><a href="#" id="emailLink">contact@montlodge.ci</a></p>
+                            <div class="contact-details">
+                                <p data-fr="Ou contactez-nous directement :" data-en="Or contact us directly:">Ou contactez-nous directement :</p>
+                                <p id="contactPhone">📞 +225 01 40 61 26 26</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">Mont<span>Lodge</span></div>
+                <p data-fr="Votre refuge de montagne en Côte d'Ivoire. Authenticité, nature et confort." data-en="Your mountain retreat in Côte d'Ivoire. Authenticity, nature, and comfort.">Votre refuge de montagne en Côte d'Ivoire. Authenticité, nature et confort.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-fr="Liens Rapides" data-en="Quick Links">Liens Rapides</h4>
+                <ul>
+                    <li><a href="#accueil" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                    <li><a href="#chambres" data-fr="Chambres" data-en="Rooms">Chambres</a></li>
+                    <li><a href="#galerie" data-fr="Galerie" data-en="Gallery">Galerie</a></li>
+                    <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-fr="Contact" data-en="Contact">Contact</h4>
+                <p id="footerPhone">📞 +225 01 40 61 26 26</p>
+                <p id="footerEmail">📧 contact@montlodge.ci</p>
+                <p>📍 <span data-fr="Côte d'Ivoire" data-en="Côte d'Ivoire">Côte d'Ivoire</span></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-fr="Suivez-nous" data-en="Follow Us">Suivez-nous</h4>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">TikTok</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mont Lodge. <span data-fr="Tous droits réservés." data-en="All rights reserved.">Tous droits réservés.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        const CONFIG = {
+            whatsappNumber: '2250140612626',
+            defaultMessageFR: 'Bonjour Mont Lodge! Je souhaite réserver un séjour.',
+            defaultMessageEN: 'Hello Mont Lodge! I would like to book a stay.',
+            mapLatitude: 7.7,
+            mapLongitude: -7.5,
+            mapZoom: 14,
+            mapEmbedURL: '',
+            emailAddress: 'contact@montlodge.ci',
+            emailSubjectFR: 'Demande de réservation - Mont Lodge',
+            emailSubjectEN: 'Booking request - Mont Lodge',
+            phoneNumber: '+225 01 40 61 26 26',
+        };
+
+        let currentLang = 'fr';
+
+        const ROOMS = [{
+            id: 1,
+            nameFR: 'Chambre Montagne',
+            nameEN: 'Mountain Room',
+            price: 25000,
+            maxGuests: 2,
+            img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80',
+            priceFR: '25 000 FCFA',
+            priceEN: '25,000 XOF',
+            featuresFR: ['1 Lit Double', 'Douche', 'Vue Montagne'],
+            featuresEN: ['1 Double Bed', 'Shower', 'Mountain View']
+        }, {
+            id: 2,
+            nameFR: 'Suite Lodge',
+            nameEN: 'Lodge Suite',
+            price: 45000,
+            maxGuests: 2,
+            img: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&q=80',
+            priceFR: '45 000 FCFA',
+            priceEN: '45,000 XOF',
+            featuresFR: ['1 Grand Lit', 'Salon', 'Cheminée', 'Terrasse'],
+            featuresEN: ['1 King Bed', 'Living Room', 'Fireplace', 'Terrace']
+        }, {
+            id: 3,
+            nameFR: 'Chambre Familiale',
+            nameEN: 'Family Room',
+            price: 60000,
+            maxGuests: 4,
+            img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80',
+            priceFR: '60 000 FCFA',
+            priceEN: '60,000 XOF',
+            featuresFR: ['2 Lits', '4 Pers.', 'Jardin Privé'],
+            featuresEN: ['2 Beds', '4 Guests', 'Private Garden']
+        }];
+
+        let selectedRoom = null;
+        let isConfirming = false;
+        let modalFormTouched = false;
+
+        function formatPrice(amount) {
+            return currentLang === 'fr' ?
+                amount.toLocaleString('fr-FR').replace(/\s/g, ' ') + ' FCFA' :
+                amount.toLocaleString('en-US') + ' XOF';
+        }
+
+        function getPerNightLabel() {
+            return currentLang === 'fr' ? '/ nuit' : '/ night';
+        }
+
+        function getWhatsAppURL(message) {
+            return 'https://wa.me/' + CONFIG.whatsappNumber + '?text=' + encodeURIComponent(message);
+        }
+
+        function updateWhatsAppLinks() {
+            const msg = currentLang === 'fr' ? CONFIG.defaultMessageFR : CONFIG.defaultMessageEN;
+            const url = getWhatsAppURL(msg);
+            ['#whatsappFloat', '.hero-whatsapp-btn', '.nav-book-btn', '.mobile-book-btn', '.mobile-whatsapp-btn'].forEach(sel => {
+                document.querySelectorAll(sel).forEach(link => { link.href = url; });
+            });
+        }
+
+        function updateEmailLinks() {
+            const subject = currentLang === 'fr' ? CONFIG.emailSubjectFR : CONFIG.emailSubjectEN;
+            const mailto = 'mailto:' + CONFIG.emailAddress + '?subject=' + encodeURIComponent(subject);
+            document.querySelectorAll('#roomsEmailLink, #emailLink').forEach(link => { link.href = mailto; });
+            document.getElementById('footerEmail').textContent = '📧 ' + CONFIG.emailAddress;
+        }
+
+        function updatePhoneDisplays() {
+            const phoneText = '📞 ' + CONFIG.phoneNumber;
+            document.getElementById('footerPhone').textContent = phoneText;
+            document.getElementById('contactPhone').textContent = phoneText;
+        }
+
+        function initMap() {
+            const mc = document.getElementById('mapContainer');
+            let url = CONFIG.mapEmbedURL && CONFIG.mapEmbedURL.trim() ? CONFIG.mapEmbedURL :
+                `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966!2d${CONFIG.mapLongitude}!3d${CONFIG.mapLatitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z${CONFIG.mapLatitude}!5e0!3m2!1sfr!2sci!4v1700000000000`;
+            mc.innerHTML = `<iframe src="${url}" allowfullscreen="" loading="lazy" title="Localisation Mont Lodge"></iframe>`;
+        }
+
+        function sendEmail() {
+            const name = document.getElementById('formName').value.trim();
+            const email = document.getElementById('formEmail').value.trim();
+            const message = document.getElementById('formMessage').value.trim();
+            const subject = currentLang === 'fr' ? CONFIG.emailSubjectFR : CONFIG.emailSubjectEN;
+            const body = `Nom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+            window.location.href = `mailto:${CONFIG.emailAddress}?subject=${encodeURIComponent(subject)}&body=${body}`;
+        }
+
+        function buildModalHTML() {
+            return `
+        <div class="modal-overlay" id="bookingModal" style="display:none;">
+          <div class="modal" role="dialog" aria-modal="true" aria-label="Booking form">
+            <button class="modal-close" onclick="closeBookingModal()" aria-label="Close">&times;</button>
+            <div class="modal-header">
+              <h3 data-fr="Réserver un séjour" data-en="Book a stay">Réserver un séjour</h3>
+              <p class="modal-subtitle" data-fr="Mont Lodge — Côte d'Ivoire" data-en="Mont Lodge — Côte d'Ivoire">Mont Lodge — Côte d'Ivoire</p>
+            </div>
+            <div class="modal-step room-selector-step active" id="roomSelectorStep">
+              <div class="step-indicator">
+                <span class="step-dot active"></span><span class="step-dot"></span>
+                <span data-fr="Étape 1/2 — Choisir une chambre" data-en="Step 1/2 — Choose a room">Étape 1/2 — Choisir une chambre</span>
+              </div>
+              <p class="room-selector-label" data-fr="Choisissez votre chambre :" data-en="Choose your room:">Choisissez votre chambre :</p>
+              <p class="room-selector-hint" data-fr="Cliquez sur une chambre pour la sélectionner" data-en="Click a room to select it">Cliquez sur une chambre pour la sélectionner</p>
+              <div class="room-selector-scroll">
+                <div class="room-selector" id="roomSelector"></div>
+              </div>
+              <div class="btn-continue-fixed">
+                <button class="btn-primary btn-block" id="btnContinueToForm" disabled data-fr="Continuer" data-en="Continue">Continuer</button>
+              </div>
+            </div>
+            <div class="modal-step booking-form-step" id="bookingFormStep">
+              <div class="step-indicator">
+                <span class="step-dot done"></span><span class="step-dot active"></span>
+                <span data-fr="Étape 2/2 — Vos détails" data-en="Step 2/2 — Your details">Étape 2/2 — Vos détails</span>
+              </div>
+              <div class="modal-room-preview" id="modalRoomPreview"></div>
+              <button class="change-room-link" onclick="goBackToRoomSelector()" data-fr="← Modifier la chambre" data-en="← Change room">← Modifier la chambre</button>
+              <div class="form-section-title" data-fr="Votre séjour" data-en="Your stay">Votre séjour</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label data-fr="Date d'arrivée" data-en="Check-in Date">Date d'arrivée</label>
+                  <input type="date" id="checkinDate" min="" required placeholder="JJ/MM/AAAA">
+                  <p class="date-hint" data-fr="Format: JJ/MM/AAAA" data-en="Format: DD/MM/YYYY">Format: JJ/MM/AAAA</p>
+                </div>
+                <div class="form-group">
+                  <label data-fr="Date de départ" data-en="Check-out Date">Date de départ</label>
+                  <input type="date" id="checkoutDate" min="" required placeholder="JJ/MM/AAAA">
+                  <p class="date-hint" data-fr="Format: JJ/MM/AAAA" data-en="Format: DD/MM/YYYY">Format: DD/MM/YYYY</p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label data-fr="Nombre d'adultes" data-en="Number of Adults">Nombre d'adultes</label>
+                  <select id="adultsCount">
+                    <option value="1">1</option><option value="2" selected>2</option>
+                    <option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label data-fr="Nombre d'enfants" data-en="Number of Children">Nombre d'enfants</label>
+                  <select id="childrenCount">
+                    <option value="0" selected>0</option><option value="1">1</option>
+                    <option value="2">2</option><option value="3">3</option>
+                  </select>
+                </div>
+              </div>
+              <p class="capacity-warning" id="capacityWarning" data-fr="Le nombre total de voyageurs dépasse la capacité de cette chambre." data-en="The total number of guests exceeds this room's capacity.">Le nombre total de voyageurs dépasse la capacité de cette chambre.</p>
+              <p class="price-note" data-fr="Prix par chambre, pas par personne." data-en="Price per room, not per person.">Prix par chambre, pas par personne.</p>
+              <div class="form-group">
+                <label data-fr="Demandes spéciales (optionnel)" data-en="Special Requests (optional)">Demandes spéciales (optionnel)</label>
+                <textarea id="specialRequests" rows="2" data-fr="Transfert aéroport, régime alimentaire..." data-en="Airport transfer, dietary requirements..." placeholder="Transfert aéroport, régime alimentaire..."></textarea>
+              </div>
+              <div class="form-section-title" data-fr="Vos coordonnées" data-en="Your details">Vos coordonnées</div>
+              <div class="form-group">
+                <label data-fr="Nom complet" data-en="Full Name">Nom complet</label>
+                <input type="text" id="guestName" data-fr="Votre nom complet" data-en="Your full name" placeholder="Votre nom complet" required>
+              </div>
+              <div class="form-group">
+                <label data-fr="Téléphone (optionnel)" data-en="Phone (optional)">Téléphone (optionnel)</label>
+                <input type="tel" id="guestPhone" placeholder="+225 XX XX XX XX XX">
+              </div>
+              <div class="price-summary" id="priceSummary">
+                <div class="summary-row">
+                  <span data-fr="Nuitées" data-en="Nights">Nuitées</span>
+                  <span id="summaryNights">—</span>
+                </div>
+                <div class="summary-row summary-total">
+                  <span data-fr="Total estimé" data-en="Estimated Total">Total estimé</span>
+                  <span id="summaryTotal">—</span>
+                </div>
+              </div>
+              <button class="btn-primary btn-whatsapp btn-block" id="btnConfirmBooking" onclick="confirmBooking()">
+                <svg viewBox="0 0 24 24" fill="white" width="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                <span data-fr="Confirmer via WhatsApp" data-en="Confirm via WhatsApp">Confirmer via WhatsApp</span>
+              </button>
+              <p class="modal-note" data-fr="Vous serez redirigé vers WhatsApp pour finaliser. Paiement à l'arrivée." data-en="You'll be redirected to WhatsApp to finalize. Payment on arrival.">Vous serez redirigé vers WhatsApp pour finaliser. Paiement à l'arrivée.</p>
+            </div>
+          </div>
+        </div>`;
+        }
+
+        function openBookingModal(preselectedRoomId = null) {
+            const existing = document.getElementById('bookingModal');
+            if (existing) existing.remove();
+            document.body.insertAdjacentHTML('beforeend', buildModalHTML());
+            document.body.classList.add('modal-open');
+            document.getElementById('bookingModal').style.display = 'flex';
+            isConfirming = false;
+            modalFormTouched = false;
+
+            const selector = document.getElementById('roomSelector');
+            selector.innerHTML = '';
+            ROOMS.forEach(room => {
+                const div = document.createElement('div');
+                div.className = 'room-option';
+                div.setAttribute('data-room-id', room.id);
+                div.setAttribute('tabindex', '0');
+                div.setAttribute('role', 'button');
+                const priceLabel = currentLang === 'fr' ? room.priceFR : room.priceEN;
+                div.setAttribute('aria-label', (currentLang === 'fr' ? room.nameFR : room.nameEN) + ' — ' + priceLabel);
+                div.innerHTML = `
+              <img src="${room.img}" alt="${room.nameFR}" loading="lazy">
+              <div>
+                <h4>${currentLang === 'fr' ? room.nameFR : room.nameEN}</h4>
+                <p class="room-option-price">${priceLabel} ${getPerNightLabel()}</p>
+                <p class="room-option-check">✓ <span data-fr="Sélectionné" data-en="Selected">Sélectionné</span></p>
+              </div>`;
+                div.addEventListener('click', () => selectRoomOption(room.id));
+                div.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault();
+                        selectRoomOption(room.id); }
+                });
+                selector.appendChild(div);
+            });
+
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkinDate').min = today;
+            document.getElementById('checkinDate').value = '';
+            document.getElementById('checkoutDate').min = today;
+            document.getElementById('checkoutDate').value = '';
+            document.getElementById('adultsCount').value = '2';
+            document.getElementById('childrenCount').value = '0';
+            document.getElementById('guestName').value = '';
+            document.getElementById('guestPhone').value = '';
+            document.getElementById('specialRequests').value = '';
+            document.getElementById('specialRequests').placeholder = currentLang === 'fr' ? 'Transfert aéroport, régime alimentaire...' : 'Airport transfer, dietary requirements...';
+            document.getElementById('guestName').placeholder = currentLang === 'fr' ? 'Votre nom complet' : 'Your full name';
+            document.getElementById('summaryNights').textContent = '—';
+            document.getElementById('summaryTotal').textContent = '—';
+            document.getElementById('btnContinueToForm').disabled = true;
+            document.getElementById('btnConfirmBooking').disabled = false;
+            document.getElementById('btnConfirmBooking').querySelector('span').textContent = currentLang === 'fr' ? 'Confirmer via WhatsApp' : 'Confirm via WhatsApp';
+            document.getElementById('capacityWarning').classList.remove('visible');
+            document.getElementById('roomSelectorStep').classList.add('active');
+            document.getElementById('bookingFormStep').classList.remove('active');
+            selectedRoom = null;
+
+            if (preselectedRoomId) {
+                selectRoomOption(preselectedRoomId);
+                goToBookingForm();
+            }
+
+            document.getElementById('checkinDate').addEventListener('change', function() {
+                modalFormTouched = true;
+                document.getElementById('checkoutDate').min = this.value;
+                if (document.getElementById('checkoutDate').value && document.getElementById('checkoutDate').value <= this.value) {
+                    document.getElementById('checkoutDate').value = '';
+                }
+                updatePriceSummary();
+            });
+            document.getElementById('checkoutDate').addEventListener('change', function() {
+                modalFormTouched = true;
+                updatePriceSummary();
+            });
+            document.getElementById('adultsCount').addEventListener('change', function() {
+                modalFormTouched = true;
+                checkCapacity();
+            });
+            document.getElementById('childrenCount').addEventListener('change', function() {
+                modalFormTouched = true;
+                checkCapacity();
+            });
+            document.getElementById('guestName').addEventListener('input', () => { modalFormTouched = true; });
+            document.getElementById('guestPhone').addEventListener('input', () => { modalFormTouched = true; });
+            document.getElementById('specialRequests').addEventListener('input', () => { modalFormTouched = true; });
+        }
+
+        function selectRoomOption(roomId) {
+            document.querySelectorAll('.room-option').forEach(opt => opt.classList.remove('selected'));
+            const option = document.querySelector(`.room-option[data-room-id="${roomId}"]`);
+            if (option) option.classList.add('selected');
+            selectedRoom = ROOMS.find(r => r.id === roomId);
+            document.getElementById('btnContinueToForm').disabled = false;
+            checkCapacity();
+        }
+
+        function goToBookingForm() {
+            document.getElementById('roomSelectorStep').classList.remove('active');
+            document.getElementById('bookingFormStep').classList.add('active');
+            updateRoomPreview();
+            const modal = document.querySelector('.modal');
+            const formStep = document.getElementById('bookingFormStep');
+            if (modal && formStep) {
+                modal.scrollTo({ top: formStep.offsetTop - 20, behavior: 'smooth' });
+            }
+        }
+
+        function goBackToRoomSelector() {
+            if (modalFormTouched) {
+                if (!confirm(currentLang === 'fr' ? 'Vos informations saisies seront perdues. Continuer ?' : 'Your entered information will be lost. Continue?')) return;
+            }
+            modalFormTouched = false;
+            document.getElementById('bookingFormStep').classList.remove('active');
+            document.getElementById('roomSelectorStep').classList.add('active');
+            const modal = document.querySelector('.modal');
+            if (modal) {
+                modal.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateRoomPreview() {
+            if (!selectedRoom) return;
+            const priceLabel = currentLang === 'fr' ? selectedRoom.priceFR : selectedRoom.priceEN;
+            document.getElementById('modalRoomPreview').innerHTML = `
+            <img src="${selectedRoom.img}" alt="${currentLang === 'fr' ? selectedRoom.nameFR : selectedRoom.nameEN}">
+            <div class="modal-room-details">
+              <h3>${currentLang === 'fr' ? selectedRoom.nameFR : selectedRoom.nameEN}</h3>
+              <p class="modal-room-price">${priceLabel} <small>${getPerNightLabel()}</small></p>
+            </div>`;
+        }
+
+        function checkCapacity() {
+            if (!selectedRoom) return;
+            const total = parseInt(document.getElementById('adultsCount').value) + parseInt(document.getElementById('childrenCount').value);
+            document.getElementById('capacityWarning').classList.toggle('visible', total > selectedRoom.maxGuests);
+        }
+
+        function updatePriceSummary() {
+            const checkin = document.getElementById('checkinDate').value;
+            const checkout = document.getElementById('checkoutDate').value;
+            if (checkin && checkout && selectedRoom) {
+                const nights = Math.max(1, Math.round((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24)));
+                const label = currentLang === 'fr' ? (nights > 1 ? 'nuits' : 'nuit') : (nights > 1 ? 'nights' : 'night');
+                document.getElementById('summaryNights').textContent = nights + ' ' + label;
+                document.getElementById('summaryTotal').textContent = formatPrice(selectedRoom.price * nights);
+            }
+        }
+
+        function closeBookingModal() {
+            if (modalFormTouched) {
+                if (!confirm(currentLang === 'fr' ? 'Fermer sans finaliser la réservation ?' : 'Close without completing the booking?')) return;
+            }
+            const modal = document.getElementById('bookingModal');
+            if (modal) modal.remove();
+            document.body.classList.remove('modal-open');
+            selectedRoom = null;
+            isConfirming = false;
+            modalFormTouched = false;
+        }
+
+        function confirmBooking() {
+            if (isConfirming) return;
+            const checkin = document.getElementById('checkinDate').value;
+            const checkout = document.getElementById('checkoutDate').value;
+            const name = document.getElementById('guestName').value.trim();
+            if (!selectedRoom) return alert(currentLang === 'fr' ? 'Veuillez sélectionner une chambre.' : 'Please select a room.');
+            if (!checkin || !checkout) return alert(currentLang === 'fr' ? 'Veuillez sélectionner les dates.' : 'Please select dates.');
+            if (!name) return alert(currentLang === 'fr' ? 'Veuillez entrer votre nom.' : 'Please enter your name.');
+            const totalGuests = parseInt(document.getElementById('adultsCount').value) + parseInt(document.getElementById('childrenCount').value);
+            if (totalGuests > selectedRoom.maxGuests) {
+                const maxMsgFR = `Cette chambre peut accueillir maximum ${selectedRoom.maxGuests} personne(s).`;
+                const maxMsgEN = `This room can accommodate a maximum of ${selectedRoom.maxGuests} guest(s).`;
+                return alert(currentLang === 'fr' ? maxMsgFR : maxMsgEN);
+            }
+
+            isConfirming = true;
+            const btn = document.getElementById('btnConfirmBooking');
+            btn.disabled = true;
+            btn.querySelector('span').textContent = currentLang === 'fr' ? 'Redirection...' : 'Redirecting...';
+
+            const adults = document.getElementById('adultsCount').value;
+            const children = document.getElementById('childrenCount').value;
+            const phone = document.getElementById('guestPhone').value.trim();
+            const special = document.getElementById('specialRequests').value.trim();
+            const nights = Math.max(1, Math.round((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24)));
+            const total = selectedRoom.price * nights;
+            const roomName = currentLang === 'fr' ? selectedRoom.nameFR : selectedRoom.nameEN;
+            const priceLabel = currentLang === 'fr' ? selectedRoom.priceFR : selectedRoom.priceEN;
+
+            const L = (fr, en) => currentLang === 'fr' ? fr : en;
+            let msg = `*${L('RÉSERVATION MONT LODGE', 'MONT LODGE BOOKING')}*\n\n`;
+            msg += `🏠 *${roomName}* (${priceLabel})\n`;
+            msg += `📅 ${L('Dates', 'Dates')}: ${checkin} → ${checkout} (${nights} ${L('nuits', 'nights')})\n`;
+            msg += `👤 ${L('Voyageurs', 'Guests')}: ${adults} ${L('adultes', 'adults')}`;
+            if (parseInt(children) > 0) msg += `, ${children} ${L('enfants', 'children')}`;
+            msg += `\n👤 ${L('Nom', 'Name')}: ${name}\n`;
+            if (phone) msg += `📞 ${L('Tél', 'Phone')}: ${phone}\n`;
+            msg += `📝 ${L('Demandes spéciales', 'Special requests')}: ${special || L('Aucune', 'None')}\n`;
+            msg += `\n💰 ${L('Total estimé', 'Estimated total')}: ${formatPrice(total)}`;
+
+            setTimeout(() => {
+                isConfirming = false;
+                btn.disabled = false;
+                btn.querySelector('span').textContent = L('Confirmer via WhatsApp', 'Confirm via WhatsApp');
+            }, 1500);
+            window.open(getWhatsAppURL(msg), '_blank');
+        }
+
+        function updateModalLanguage() {
+            const modal = document.getElementById('bookingModal');
+            if (!modal) return;
+            modal.querySelectorAll('[data-fr]').forEach(el => {
+                if (el.getAttribute('data-fr') && el.getAttribute('data-en') && !el.closest('.room-option')) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = currentLang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+                    } else if (!el.querySelector('span, a, button, img, svg, input, select, textarea')) {
+                        el.textContent = currentLang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+                    }
+                }
+            });
+            document.querySelectorAll('.room-option').forEach(opt => {
+                const room = ROOMS.find(r => r.id === parseInt(opt.getAttribute('data-room-id')));
+                if (room) {
+                    opt.querySelector('h4').textContent = currentLang === 'fr' ? room.nameFR : room.nameEN;
+                    const priceLabel = currentLang === 'fr' ? room.priceFR : room.priceEN;
+                    opt.querySelector('.room-option-price').textContent = priceLabel + ' ' + getPerNightLabel();
+                    const checkSpan = opt.querySelector('.room-option-check span');
+                    if (checkSpan) checkSpan.textContent = currentLang === 'fr' ? 'Sélectionné' : 'Selected';
+                }
+            });
+            if (selectedRoom) updateRoomPreview();
+            updatePriceSummary();
+        }
+
+        function updateRoomCardPrices() {
+            document.querySelectorAll('.price-amount').forEach(el => {
+                if (el.getAttribute('data-fr') && el.getAttribute('data-en')) {
+                    el.textContent = currentLang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+                }
+            });
+            document.querySelectorAll('.price-per').forEach(el => {
+                if (el.getAttribute('data-fr') && el.getAttribute('data-en')) {
+                    el.textContent = currentLang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+                }
+            });
+        }
+
+        function initBookingButtons() {
+            document.querySelectorAll('.room-book-1').forEach(b => b.addEventListener('click', function(e) { e.preventDefault();
+                openBookingModal(1); }));
+            document.querySelectorAll('.room-book-2').forEach(b => b.addEventListener('click', function(e) { e.preventDefault();
+                openBookingModal(2); }));
+            document.querySelectorAll('.room-book-3').forEach(b => b.addEventListener('click', function(e) { e.preventDefault();
+                openBookingModal(3); }));
+
+            document.querySelectorAll('.room-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('.btn-whatsapp-sm') || e.target.closest('a')) return;
+                    const roomId = parseInt(card.getAttribute('data-room'));
+                    if (roomId) openBookingModal(roomId);
+                });
+            });
+
+            document.querySelectorAll('.hero-whatsapp-btn, .nav-book-btn, .mobile-book-btn, .mobile-whatsapp-btn').forEach(b => b.addEventListener('click', function(e) { e.preventDefault();
+                openBookingModal(null); }));
+            const fb = document.getElementById('whatsappFloat');
+            if (fb) fb.addEventListener('click', function(e) { e.preventDefault();
+                openBookingModal(null); });
+        }
+
+        document.addEventListener('click', function(e) { if (e.target.id === 'bookingModal') closeBookingModal(); });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('bookingModal')) closeBookingModal();
+        });
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            const hamburger = document.querySelector('.hamburger');
+            const active = menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', active);
+        }
+
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+            document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
+        }
+
+        (function() {
+            const grid = document.getElementById('galleryGrid');
+            const items = grid.querySelectorAll('.gallery-item');
+            let idx = 0;
+
+            function open(i) {
+                idx = i;
+                const img = items[i].querySelector('img');
+                const lb = document.createElement('div');
+                lb.className = 'lightbox';
+                lb.id = 'lightbox';
+                lb.innerHTML = `
+              <span class="lightbox-close">&times;</span>
+              <span class="lightbox-nav lightbox-prev">&lsaquo;</span>
+              <img src="${img.src.replace('w=600','w=1200')}" alt="${img.alt}">
+              <span class="lightbox-nav lightbox-next">&rsaquo;</span>`;
+                lb.addEventListener('click', function(e) {
+                    if (e.target === lb || e.target.classList.contains('lightbox-close')) lb.remove();
+                });
+                lb.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation();
+                    nav(-1); });
+                lb.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation();
+                    nav(1); });
+                document.addEventListener('keydown', function kh(e) {
+                    if (e.key === 'Escape') { lb.remove();
+                        document.removeEventListener('keydown', kh); }
+                    if (e.key === 'ArrowLeft') nav(-1);
+                    if (e.key === 'ArrowRight') nav(1);
+                });
+                document.body.appendChild(lb);
+
+                function nav(d) {
+                    idx = (idx + d + items.length) % items.length;
+                    const ni = items[idx].querySelector('img');
+                    lb.querySelector('img').src = ni.src.replace('w=600', 'w=1200');
+                    lb.querySelector('img').alt = ni.alt;
+                }
+            }
+            items.forEach((item, i) => {
+                item.setAttribute('data-index', i);
+                item.addEventListener('click', () => open(i));
+                item.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault();
+                        open(i); }
+                });
+            });
+        })();
+
+        function switchLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('montLodgeLang', lang);
+            document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            const btnFrMobile = document.getElementById('btn-fr-mobile');
+            const btnEnMobile = document.getElementById('btn-en-mobile');
+            if (btnFrMobile) btnFrMobile.classList.toggle('active', lang === 'fr');
+            if (btnEnMobile) btnEnMobile.classList.toggle('active', lang === 'en');
+
+            document.querySelectorAll('[data-fr]').forEach(el => {
+                if (el.getAttribute('data-fr') && el.getAttribute('data-en')) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = lang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+                    } else if (!el.closest('.room-option') && !el.querySelector('span, a, button, img, svg, input, select, textarea')) {
+                        el.textContent = lang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+                    }
+                }
+            });
+
+            document.querySelectorAll('[data-fr-aria]').forEach(el => {
+                if (el.getAttribute('data-fr-aria') && el.getAttribute('data-en-aria')) {
+                    el.setAttribute('aria-label', lang === 'fr' ? el.getAttribute('data-fr-aria') : el.getAttribute('data-en-aria'));
+                }
+            });
+
+            updateRoomCardPrices();
+            updateWhatsAppLinks();
+            updateEmailLinks();
+            updatePhoneDisplays();
+            if (document.getElementById('bookingModal')) updateModalLanguage();
+        }
+
+        const saved = localStorage.getItem('montLodgeLang');
+        if (saved && (saved === 'fr' || saved === 'en')) switchLang(saved);
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        updateWhatsAppLinks();
+        updateEmailLinks();
+        updatePhoneDisplays();
+        initMap();
+        initBookingButtons();
+    </script>
+</body>
+</html>

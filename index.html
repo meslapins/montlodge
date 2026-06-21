@@ -230,13 +230,13 @@
             align-items: center;
         }
         .lang-toggle button {
-            width: 34px;
+            width: 40px;
             height: 34px;
-            border-radius: 50%;
+            border-radius: var(--radius-sm);
             border: 2px solid rgba(255, 255, 255, 0.5);
             cursor: pointer;
             font-weight: 700;
-            font-size: 0.72rem;
+            font-size: 0.65rem;
             letter-spacing: 0.5px;
             transition: var(--transition);
             background: transparent;
@@ -245,8 +245,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
+            gap: 3px;
+            padding: 0 6px;
             line-height: 1;
+        }
+        .lang-toggle button .flag-icon {
+            width: 16px;
+            height: 12px;
+            border-radius: 1px;
+            flex-shrink: 0;
         }
         .lang-toggle button.active {
             background: var(--gold);
@@ -276,17 +283,17 @@
         }
         .mobile-lang-toggle-nav {
             display: none;
-            gap: 6px;
+            gap: 4px;
             align-items: center;
         }
         .mobile-lang-toggle-nav button {
-            width: 30px;
+            width: 38px;
             height: 30px;
-            border-radius: 50%;
+            border-radius: var(--radius-sm);
             border: 2px solid rgba(255, 255, 255, 0.5);
             cursor: pointer;
             font-weight: 700;
-            font-size: 0.68rem;
+            font-size: 0.6rem;
             letter-spacing: 0.5px;
             transition: var(--transition);
             background: transparent;
@@ -295,8 +302,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
+            gap: 2px;
+            padding: 0 4px;
             line-height: 1;
+        }
+        .mobile-lang-toggle-nav button .flag-icon {
+            width: 14px;
+            height: 10px;
+            border-radius: 1px;
+            flex-shrink: 0;
         }
         .mobile-lang-toggle-nav button.active {
             background: var(--gold);
@@ -1052,13 +1066,13 @@
             margin-top: 4px;
         }
         .footer-lang-toggle button {
-            width: 32px;
+            width: 46px;
             height: 32px;
-            border-radius: 50%;
+            border-radius: var(--radius-sm);
             border: 2px solid rgba(255, 255, 255, 0.3);
             cursor: pointer;
             font-weight: 700;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.5px;
             transition: var(--transition);
             background: transparent;
@@ -1067,8 +1081,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
+            gap: 3px;
+            padding: 0 6px;
             line-height: 1;
+        }
+        .footer-lang-toggle button .flag-icon {
+            width: 15px;
+            height: 11px;
+            border-radius: 1px;
+            flex-shrink: 0;
         }
         .footer-lang-toggle button.active {
             background: var(--gold);
@@ -1128,19 +1149,29 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .mobile-lang-toggle-menu button {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+            width: 46px;
+            height: 34px;
+            border-radius: var(--radius-sm);
             border: 2px solid rgba(255, 255, 255, 0.3);
             cursor: pointer;
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             background: transparent;
             color: rgba(255, 255, 255, 0.7);
             font-family: 'Lora', serif;
             transition: var(--transition);
-            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            padding: 0 6px;
             line-height: 1;
+        }
+        .mobile-lang-toggle-menu button .flag-icon {
+            width: 15px;
+            height: 11px;
+            border-radius: 1px;
+            flex-shrink: 0;
         }
         .mobile-lang-toggle-menu button.active {
             background: var(--gold);
@@ -1712,19 +1743,40 @@
                 grid-template-columns: 1fr;
             }
             .lang-toggle button {
-                width: 32px;
-                height: 32px;
-                font-size: 0.7rem;
+                width: 38px;
+                height: 30px;
+                font-size: 0.6rem;
+            }
+            .lang-toggle button .flag-icon {
+                width: 14px;
+                height: 10px;
             }
             .mobile-lang-toggle-nav button {
-                width: 28px;
+                width: 36px;
                 height: 28px;
-                font-size: 0.65rem;
+                font-size: 0.58rem;
+            }
+            .mobile-lang-toggle-nav button .flag-icon {
+                width: 13px;
+                height: 9px;
             }
             .footer-lang-toggle button {
-                width: 30px;
+                width: 44px;
                 height: 30px;
-                font-size: 0.68rem;
+                font-size: 0.6rem;
+            }
+            .footer-lang-toggle button .flag-icon {
+                width: 14px;
+                height: 10px;
+            }
+            .mobile-lang-toggle-menu button {
+                width: 44px;
+                height: 32px;
+                font-size: 0.65rem;
+            }
+            .mobile-lang-toggle-menu button .flag-icon {
+                width: 14px;
+                height: 10px;
             }
         }
         @media (max-width: 400px) {
@@ -1742,9 +1794,13 @@
                 font-size: 1.8rem;
             }
             .mobile-lang-toggle-nav button {
-                width: 26px;
+                width: 34px;
                 height: 26px;
-                font-size: 0.6rem;
+                font-size: 0.55rem;
+            }
+            .mobile-lang-toggle-nav button .flag-icon {
+                width: 12px;
+                height: 8px;
             }
         }
     </style>
@@ -1776,8 +1832,12 @@
         <a href="#contact" onclick="closeMenu()" data-fr="Contact" data-en="Contact">Contact</a>
         <a href="#" class="nav-cta mobile-book-btn" style="display:inline-block;text-align:center;" data-fr="Réserver" data-en="Book Now">Réserver</a>
         <div class="mobile-lang-toggle-menu">
-            <button class="active" onclick="switchLang('fr'); closeMenu();" id="btn-fr-mobile" aria-label="Français">FR</button>
-            <button onclick="switchLang('en'); closeMenu();" id="btn-en-mobile" aria-label="English">EN</button>
+            <button class="active" onclick="switchLang('fr'); closeMenu();" id="btn-fr-mobile" aria-label="Français">
+                <svg class="flag-icon" viewBox="0 0 24 24"><rect x="0" y="0" width="8" height="24" fill="#002395"/><rect x="8" y="0" width="8" height="24" fill="#ffffff"/><rect x="16" y="0" width="8" height="24" fill="#ED2939"/></svg> FR
+            </button>
+            <button onclick="switchLang('en'); closeMenu();" id="btn-en-mobile" aria-label="English">
+                <svg class="flag-icon" viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0L24 24M24 0L0 24" stroke="#fff" stroke-width="4"/><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="2"/><line x1="12" y1="0" x2="12" y2="24" stroke="#fff" stroke-width="6"/><line x1="0" y1="12" x2="24" y2="12" stroke="#fff" stroke-width="6"/><line x1="12" y1="0" x2="12" y2="24" stroke="#C8102E" stroke-width="3"/><line x1="0" y1="12" x2="24" y2="12" stroke="#C8102E" stroke-width="3"/></svg> EN
+            </button>
         </div>
     </div>
 
@@ -1791,14 +1851,22 @@
         </ul>
         <div class="nav-right">
             <div class="lang-toggle" id="langToggleDesktop">
-                <button class="active" onclick="switchLang('fr')" id="btn-fr" aria-label="Français" title="Français">FR</button>
-                <button onclick="switchLang('en')" id="btn-en" aria-label="English" title="English">EN</button>
+                <button class="active" onclick="switchLang('fr')" id="btn-fr" aria-label="Français" title="Français">
+                    <svg class="flag-icon" viewBox="0 0 24 24"><rect x="0" y="0" width="8" height="24" fill="#002395"/><rect x="8" y="0" width="8" height="24" fill="#ffffff"/><rect x="16" y="0" width="8" height="24" fill="#ED2939"/></svg> FR
+                </button>
+                <button onclick="switchLang('en')" id="btn-en" aria-label="English" title="English">
+                    <svg class="flag-icon" viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0L24 24M24 0L0 24" stroke="#fff" stroke-width="4"/><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="2"/><line x1="12" y1="0" x2="12" y2="24" stroke="#fff" stroke-width="6"/><line x1="0" y1="12" x2="24" y2="12" stroke="#fff" stroke-width="6"/><line x1="12" y1="0" x2="12" y2="24" stroke="#C8102E" stroke-width="3"/><line x1="0" y1="12" x2="24" y2="12" stroke="#C8102E" stroke-width="3"/></svg> EN
+                </button>
             </div>
             <a href="#" class="nav-cta nav-book-btn" data-fr="Réserver" data-en="Book Now">Réserver</a>
         </div>
         <div class="mobile-lang-toggle-nav" id="langToggleMobileNav">
-            <button class="active" onclick="switchLang('fr')" id="btn-fr-mobilenav" aria-label="Français" title="Français">FR</button>
-            <button onclick="switchLang('en')" id="btn-en-mobilenav" aria-label="English" title="English">EN</button>
+            <button class="active" onclick="switchLang('fr')" id="btn-fr-mobilenav" aria-label="Français" title="Français">
+                <svg class="flag-icon" viewBox="0 0 24 24"><rect x="0" y="0" width="8" height="24" fill="#002395"/><rect x="8" y="0" width="8" height="24" fill="#ffffff"/><rect x="16" y="0" width="8" height="24" fill="#ED2939"/></svg> FR
+            </button>
+            <button onclick="switchLang('en')" id="btn-en-mobilenav" aria-label="English" title="English">
+                <svg class="flag-icon" viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0L24 24M24 0L0 24" stroke="#fff" stroke-width="4"/><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="2"/><line x1="12" y1="0" x2="12" y2="24" stroke="#fff" stroke-width="6"/><line x1="0" y1="12" x2="24" y2="12" stroke="#fff" stroke-width="6"/><line x1="12" y1="0" x2="12" y2="24" stroke="#C8102E" stroke-width="3"/><line x1="0" y1="12" x2="24" y2="12" stroke="#C8102E" stroke-width="3"/></svg> EN
+            </button>
         </div>
         <button class="hamburger" onclick="toggleMenu()" aria-label="Menu de navigation" data-fr-aria="Menu de navigation" data-en-aria="Navigation menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -2058,8 +2126,12 @@
             <div class="footer-col">
                 <h4 data-fr="Langue" data-en="Language">Langue</h4>
                 <div class="footer-lang-toggle" id="langToggleFooter">
-                    <button class="active" onclick="switchLang('fr')" id="btn-fr-footer" aria-label="Français" title="Français">FR</button>
-                    <button onclick="switchLang('en')" id="btn-en-footer" aria-label="English" title="English">EN</button>
+                    <button class="active" onclick="switchLang('fr')" id="btn-fr-footer" aria-label="Français" title="Français">
+                        <svg class="flag-icon" viewBox="0 0 24 24"><rect x="0" y="0" width="8" height="24" fill="#002395"/><rect x="8" y="0" width="8" height="24" fill="#ffffff"/><rect x="16" y="0" width="8" height="24" fill="#ED2939"/></svg> FR
+                    </button>
+                    <button onclick="switchLang('en')" id="btn-en-footer" aria-label="English" title="English">
+                        <svg class="flag-icon" viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0L24 24M24 0L0 24" stroke="#fff" stroke-width="4"/><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="2"/><line x1="12" y1="0" x2="12" y2="24" stroke="#fff" stroke-width="6"/><line x1="0" y1="12" x2="24" y2="12" stroke="#fff" stroke-width="6"/><line x1="12" y1="0" x2="12" y2="24" stroke="#C8102E" stroke-width="3"/><line x1="0" y1="12" x2="24" y2="12" stroke="#C8102E" stroke-width="3"/></svg> EN
+                    </button>
                 </div>
                 <h4 style="margin-top:20px;" data-fr="Suivez-nous" data-en="Follow Us">Suivez-nous</h4>
                 <p><a href="#">Facebook</a></p>
@@ -2251,7 +2323,7 @@
               </div>
               <div class="form-group">
                 <label data-fr="Téléphone (optionnel)" data-en="Phone (optional)">Téléphone (optionnel)</label>
-                <input type="tel" id="guestPhone" placeholder="+225 XX XX XX XX XX">
+                <input type="tel" id="guestPhone" data-fr="+225 XX XX XX XX XX" data-en="+225 XX XX XX XX XX" placeholder="+225 XX XX XX XX XX">
               </div>
               <div class="price-summary" id="priceSummary">
                 <div class="summary-row">
@@ -2319,6 +2391,7 @@
             document.getElementById('specialRequests').value = '';
             document.getElementById('specialRequests').placeholder = currentLang === 'fr' ? 'Transfert aéroport, régime alimentaire...' : 'Airport transfer, dietary requirements...';
             document.getElementById('guestName').placeholder = currentLang === 'fr' ? 'Votre nom complet' : 'Your full name';
+            document.getElementById('guestPhone').placeholder = currentLang === 'fr' ? document.getElementById('guestPhone').getAttribute('data-fr') : document.getElementById('guestPhone').getAttribute('data-en');
             document.getElementById('summaryNights').textContent = '—';
             document.getElementById('summaryTotal').textContent = '—';
             document.getElementById('btnContinueToForm').disabled = true;
@@ -2328,6 +2401,11 @@
             document.getElementById('roomSelectorStep').classList.add('active');
             document.getElementById('bookingFormStep').classList.remove('active');
             selectedRoom = null;
+
+            document.getElementById('btnContinueToForm').addEventListener('click', function() {
+                if (!selectedRoom) return;
+                goToBookingForm();
+            });
 
             if (preselectedRoomId) {
                 selectRoomOption(preselectedRoomId);
@@ -2357,6 +2435,8 @@
             document.getElementById('guestName').addEventListener('input', () => { modalFormTouched = true; });
             document.getElementById('guestPhone').addEventListener('input', () => { modalFormTouched = true; });
             document.getElementById('specialRequests').addEventListener('input', () => { modalFormTouched = true; });
+
+            updateModalLanguage();
         }
 
         function selectRoomOption(roomId) {
@@ -2495,6 +2575,10 @@
                     }
                 }
             });
+            const modalClose = document.querySelector('.modal-close');
+            if (modalClose && modalClose.getAttribute('data-fr-aria')) {
+                modalClose.setAttribute('aria-label', currentLang === 'fr' ? modalClose.getAttribute('data-fr-aria') : modalClose.getAttribute('data-en-aria'));
+            }
             document.querySelectorAll('.room-option').forEach(opt => {
                 const room = ROOMS.find(r => r.id === parseInt(opt.getAttribute('data-room-id')));
                 if (room) {

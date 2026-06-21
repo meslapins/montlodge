@@ -111,7 +111,7 @@
             position: fixed;
             bottom: 28px;
             right: 28px;
-            z-index: 1000;
+            z-index: 998;
             background: var(--whatsapp-green);
             color: white;
             width: 54px;
@@ -133,6 +133,41 @@
         .whatsapp-float svg {
             width: 28px;
             height: 28px;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 92px;
+            right: 28px;
+            z-index: 997;
+            background: var(--forest);
+            color: var(--white);
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 14px rgba(26, 46, 31, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--forest-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 46, 31, 0.4);
+        }
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
         }
         nav {
             position: fixed;
@@ -238,6 +273,44 @@
         nav.scrolled .lang-toggle button:hover {
             border-color: var(--white);
             color: var(--white);
+        }
+        .mobile-lang-toggle-nav {
+            display: none;
+            gap: 6px;
+            align-items: center;
+        }
+        .mobile-lang-toggle-nav button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Lora', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+        }
+        .mobile-lang-toggle-nav button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--forest-dark);
+        }
+        nav.scrolled .mobile-lang-toggle-nav button {
+            border-color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        nav.scrolled .mobile-lang-toggle-nav button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--forest-dark);
         }
         .nav-cta {
             background: var(--whatsapp-green) !important;
@@ -439,7 +512,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            z-index: 998;
+            z-index: 996;
             background: var(--white);
             padding: 12px 16px;
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
@@ -972,6 +1045,44 @@
         .footer-logo span {
             color: var(--gold);
         }
+        .footer-lang-toggle {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-top: 4px;
+        }
+        .footer-lang-toggle button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Lora', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+        }
+        .footer-lang-toggle button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--forest-dark);
+        }
+        .footer-lang-toggle button:hover {
+            border-color: var(--white);
+            color: var(--white);
+        }
+        .footer-lang-toggle button.active:hover {
+            background: var(--gold);
+            color: var(--forest-dark);
+        }
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
@@ -1009,14 +1120,14 @@
         .mobile-menu a:hover {
             color: var(--gold);
         }
-        .mobile-lang-toggle {
+        .mobile-lang-toggle-menu {
             display: flex;
             gap: 8px;
             margin-top: 10px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .mobile-lang-toggle button {
+        .mobile-lang-toggle-menu button {
             width: 36px;
             height: 36px;
             border-radius: 50%;
@@ -1031,7 +1142,7 @@
             padding: 0;
             line-height: 1;
         }
-        .mobile-lang-toggle button.active {
+        .mobile-lang-toggle-menu button.active {
             background: var(--gold);
             border-color: var(--gold);
             color: var(--forest-dark);
@@ -1449,6 +1560,9 @@
             .nav-right {
                 display: none;
             }
+            .mobile-lang-toggle-nav {
+                display: flex;
+            }
             .hamburger {
                 display: flex;
             }
@@ -1483,6 +1597,16 @@
             }
             .whatsapp-float {
                 display: none;
+            }
+            .back-to-top {
+                bottom: 78px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+            }
+            .back-to-top svg {
+                width: 18px;
+                height: 18px;
             }
             .hero-buttons {
                 flex-direction: column;
@@ -1592,6 +1716,16 @@
                 height: 32px;
                 font-size: 0.7rem;
             }
+            .mobile-lang-toggle-nav button {
+                width: 28px;
+                height: 28px;
+                font-size: 0.65rem;
+            }
+            .footer-lang-toggle button {
+                width: 30px;
+                height: 30px;
+                font-size: 0.68rem;
+            }
         }
         @media (max-width: 400px) {
             .amenities-grid {
@@ -1607,6 +1741,11 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
+            .mobile-lang-toggle-nav button {
+                width: 26px;
+                height: 26px;
+                font-size: 0.6rem;
+            }
         }
     </style>
 </head>
@@ -1615,6 +1754,10 @@
     <a href="#" class="whatsapp-float" id="whatsappFloat" target="_blank" aria-label="Réserver via WhatsApp" data-fr-aria="Réserver via WhatsApp" data-en-aria="Book via WhatsApp">
         <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
     </a>
+
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut" data-fr-aria="Retour en haut" data-en-aria="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
 
     <div class="mobile-sticky-bar" id="mobileStickyBar">
         <a href="#" class="btn-primary btn-whatsapp mobile-whatsapp-btn">
@@ -1632,7 +1775,7 @@
         <a href="#chambres" onclick="closeMenu()" data-fr="Chambres" data-en="Rooms">Chambres</a>
         <a href="#contact" onclick="closeMenu()" data-fr="Contact" data-en="Contact">Contact</a>
         <a href="#" class="nav-cta mobile-book-btn" style="display:inline-block;text-align:center;" data-fr="Réserver" data-en="Book Now">Réserver</a>
-        <div class="mobile-lang-toggle">
+        <div class="mobile-lang-toggle-menu">
             <button class="active" onclick="switchLang('fr'); closeMenu();" id="btn-fr-mobile" aria-label="Français">FR</button>
             <button onclick="switchLang('en'); closeMenu();" id="btn-en-mobile" aria-label="English">EN</button>
         </div>
@@ -1647,11 +1790,15 @@
             <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
         </ul>
         <div class="nav-right">
-            <div class="lang-toggle">
+            <div class="lang-toggle" id="langToggleDesktop">
                 <button class="active" onclick="switchLang('fr')" id="btn-fr" aria-label="Français" title="Français">FR</button>
                 <button onclick="switchLang('en')" id="btn-en" aria-label="English" title="English">EN</button>
             </div>
             <a href="#" class="nav-cta nav-book-btn" data-fr="Réserver" data-en="Book Now">Réserver</a>
+        </div>
+        <div class="mobile-lang-toggle-nav" id="langToggleMobileNav">
+            <button class="active" onclick="switchLang('fr')" id="btn-fr-mobilenav" aria-label="Français" title="Français">FR</button>
+            <button onclick="switchLang('en')" id="btn-en-mobilenav" aria-label="English" title="English">EN</button>
         </div>
         <button class="hamburger" onclick="toggleMenu()" aria-label="Menu de navigation" data-fr-aria="Menu de navigation" data-en-aria="Navigation menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -1684,7 +1831,7 @@
         <section id="apropos">
             <div class="container">
                 <div class="about-grid">
-                    <img src="https://unsplash.com/fr/photos/lit-noir-et-blanc-pres-dune-table-en-bois-marron-T5pL6ciEn-I" alt="Vue extérieure du Mont Lodge, lodge de montagne en Côte d'Ivoire" class="about-img" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Vue extérieure du Mont Lodge, lodge de montagne en Côte d'Ivoire" class="about-img" loading="lazy">
                     <div class="about-text">
                         <div class="section-header" style="text-align:left;margin-bottom:20px;">
                             <h2 data-fr="Notre Histoire" data-en="Our Story">Notre Histoire</h2>
@@ -1712,7 +1859,7 @@
                 </div>
                 <div class="rooms-grid">
                     <div class="room-card" data-room="1">
-                        <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80" alt="Chambre Montagne avec vue" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1598928506311-c55e5b6b3e0f?w=600&q=80" alt="Chambre Montagne avec vue" loading="lazy">
                         <div class="room-info">
                             <h3 data-fr="Chambre Montagne" data-en="Mountain Room">Chambre Montagne</h3>
                             <p class="price"><span class="price-amount" data-fr="25 000 FCFA" data-en="25,000 XOF">25 000 FCFA</span> <span class="price-per" data-fr="/ nuit" data-en="/ night">/ nuit</span></p>
@@ -1731,7 +1878,7 @@
                     </div>
                     <div class="room-card" data-room="2">
                         <span class="room-badge" data-fr="Meilleur Rapport Qualité-Prix" data-en="Best Value">Meilleur Rapport Qualité-Prix</span>
-                        <img src="https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&q=80" alt="Suite Lodge avec cheminée" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=600&q=80" alt="Suite Lodge avec cheminée" loading="lazy">
                         <div class="room-info">
                             <h3 data-fr="Suite Lodge" data-en="Lodge Suite">Suite Lodge</h3>
                             <p class="price"><span class="price-amount" data-fr="45 000 FCFA" data-en="45,000 XOF">45 000 FCFA</span> <span class="price-per" data-fr="/ nuit" data-en="/ night">/ nuit</span></p>
@@ -1750,7 +1897,7 @@
                         </div>
                     </div>
                     <div class="room-card" data-room="3">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Chambre Familiale avec jardin" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Chambre Familiale avec jardin" loading="lazy">
                         <div class="room-info">
                             <h3 data-fr="Chambre Familiale" data-en="Family Room">Chambre Familiale</h3>
                             <p class="price"><span class="price-amount" data-fr="60 000 FCFA" data-en="60,000 XOF">60 000 FCFA</span> <span class="price-per" data-fr="/ nuit" data-en="/ night">/ nuit</span></p>
@@ -1805,10 +1952,10 @@
                 <div class="gallery-grid" id="galleryGrid">
                     <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Vue panoramique des montagnes" loading="lazy"></div>
                     <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=600&q=80" alt="Intérieur chaleureux du lodge" loading="lazy"></div>
-                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80" alt="Sentier de randonnée" loading="lazy"></div>
-                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=600&q=80" alt="Rivière de montagne" loading="lazy"></div>
-                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1414016642750-7fdd78dc33d9?w=600&q=80" alt="Feu de camp au crépuscule" loading="lazy"></div>
-                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1529693662653-9d480530a697?w=600&q=80" alt="Plat de cuisine ivoirienne" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80" alt="Sentier de randonnée" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80" alt="Rivière de montagne" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=600&q=80" alt="Feu de camp au crépuscule" loading="lazy"></div>
+                    <div class="gallery-item" role="button" tabindex="0" data-fr-aria="Agrandir l'image" data-en-aria="Enlarge image" aria-label="Agrandir l'image"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Plat de cuisine ivoirienne" loading="lazy"></div>
                 </div>
             </div>
         </section>
@@ -1867,7 +2014,7 @@
                             </div>
                             <div class="form-group">
                                 <label data-fr="Email" data-en="Email">Email</label>
-                                <input type="email" id="formEmail" placeholder="votre@email.com">
+                                <input type="email" id="formEmail" data-fr="votre@email.com" data-en="your@email.com" placeholder="votre@email.com">
                             </div>
                             <div class="form-group">
                                 <label data-fr="Message" data-en="Message">Message</label>
@@ -1909,7 +2056,12 @@
                 <p>📍 <span data-fr="Côte d'Ivoire" data-en="Côte d'Ivoire">Côte d'Ivoire</span></p>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Suivez-nous" data-en="Follow Us">Suivez-nous</h4>
+                <h4 data-fr="Langue" data-en="Language">Langue</h4>
+                <div class="footer-lang-toggle" id="langToggleFooter">
+                    <button class="active" onclick="switchLang('fr')" id="btn-fr-footer" aria-label="Français" title="Français">FR</button>
+                    <button onclick="switchLang('en')" id="btn-en-footer" aria-label="English" title="English">EN</button>
+                </div>
+                <h4 style="margin-top:20px;" data-fr="Suivez-nous" data-en="Follow Us">Suivez-nous</h4>
                 <p><a href="#">Facebook</a></p>
                 <p><a href="#">Instagram</a></p>
                 <p><a href="#">TikTok</a></p>
@@ -1943,7 +2095,7 @@
             nameEN: 'Mountain Room',
             price: 25000,
             maxGuests: 2,
-            img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80',
+            img: 'https://images.unsplash.com/photo-1598928506311-c55e5b6b3e0f?w=600&q=80',
             priceFR: '25 000 FCFA',
             priceEN: '25,000 XOF',
             featuresFR: ['1 Lit Double', 'Douche', 'Vue Montagne'],
@@ -1954,7 +2106,7 @@
             nameEN: 'Lodge Suite',
             price: 45000,
             maxGuests: 2,
-            img: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&q=80',
+            img: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=600&q=80',
             priceFR: '45 000 FCFA',
             priceEN: '45,000 XOF',
             featuresFR: ['1 Grand Lit', 'Salon', 'Cheminée', 'Terrasse'],
@@ -1965,7 +2117,7 @@
             nameEN: 'Family Room',
             price: 60000,
             maxGuests: 4,
-            img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80',
+            img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80',
             priceFR: '60 000 FCFA',
             priceEN: '60,000 XOF',
             featuresFR: ['2 Lits', '4 Pers.', 'Jardin Privé'],
@@ -2031,7 +2183,7 @@
             return `
         <div class="modal-overlay" id="bookingModal" style="display:none;">
           <div class="modal" role="dialog" aria-modal="true" aria-label="Booking form">
-            <button class="modal-close" onclick="closeBookingModal()" aria-label="Close">&times;</button>
+            <button class="modal-close" onclick="closeBookingModal()" data-fr-aria="Fermer" data-en-aria="Close" aria-label="Fermer">&times;</button>
             <div class="modal-header">
               <h3 data-fr="Réserver un séjour" data-en="Book a stay">Réserver un séjour</h3>
               <p class="modal-subtitle" data-fr="Mont Lodge — Côte d'Ivoire" data-en="Mont Lodge — Côte d'Ivoire">Mont Lodge — Côte d'Ivoire</p>
@@ -2220,11 +2372,12 @@
             document.getElementById('roomSelectorStep').classList.remove('active');
             document.getElementById('bookingFormStep').classList.add('active');
             updateRoomPreview();
-            const modal = document.querySelector('.modal');
-            const formStep = document.getElementById('bookingFormStep');
-            if (modal && formStep) {
-                modal.scrollTo({ top: formStep.offsetTop - 20, behavior: 'smooth' });
-            }
+            setTimeout(() => {
+                const modal = document.querySelector('.modal');
+                if (modal) {
+                    modal.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }, 50);
         }
 
         function goBackToRoomSelector() {
@@ -2234,10 +2387,12 @@
             modalFormTouched = false;
             document.getElementById('bookingFormStep').classList.remove('active');
             document.getElementById('roomSelectorStep').classList.add('active');
-            const modal = document.querySelector('.modal');
-            if (modal) {
-                modal.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            setTimeout(() => {
+                const modal = document.querySelector('.modal');
+                if (modal) {
+                    modal.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }, 50);
         }
 
         function updateRoomPreview() {
@@ -2396,7 +2551,10 @@
         });
 
         window.addEventListener('scroll', () => {
-            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 80);
+            const backToTop = document.getElementById('backToTop');
+            backToTop.classList.toggle('visible', window.scrollY > 300);
         });
 
         function toggleMenu() {
@@ -2425,11 +2583,14 @@
                 const lb = document.createElement('div');
                 lb.className = 'lightbox';
                 lb.id = 'lightbox';
+                const closeLabel = currentLang === 'fr' ? 'Fermer' : 'Close';
+                const prevLabel = currentLang === 'fr' ? 'Précédent' : 'Previous';
+                const nextLabel = currentLang === 'fr' ? 'Suivant' : 'Next';
                 lb.innerHTML = `
-              <span class="lightbox-close">&times;</span>
-              <span class="lightbox-nav lightbox-prev">&lsaquo;</span>
+              <span class="lightbox-close" aria-label="${closeLabel}" data-fr-aria="Fermer" data-en-aria="Close">&times;</span>
+              <span class="lightbox-nav lightbox-prev" aria-label="${prevLabel}" data-fr-aria="Précédent" data-en-aria="Previous">&lsaquo;</span>
               <img src="${img.src.replace('w=600','w=1200')}" alt="${img.alt}">
-              <span class="lightbox-nav lightbox-next">&rsaquo;</span>`;
+              <span class="lightbox-nav lightbox-next" aria-label="${nextLabel}" data-fr-aria="Suivant" data-en-aria="Next">&rsaquo;</span>`;
                 lb.addEventListener('click', function(e) {
                     if (e.target === lb || e.target.classList.contains('lightbox-close')) lb.remove();
                 });
@@ -2462,15 +2623,25 @@
             });
         })();
 
+        function syncAllLangToggles(lang) {
+            const isFr = lang === 'fr';
+            [
+                ['btn-fr', 'btn-en'],
+                ['btn-fr-mobile', 'btn-en-mobile'],
+                ['btn-fr-mobilenav', 'btn-en-mobilenav'],
+                ['btn-fr-footer', 'btn-en-footer']
+            ].forEach(([frId, enId]) => {
+                const frBtn = document.getElementById(frId);
+                const enBtn = document.getElementById(enId);
+                if (frBtn) frBtn.classList.toggle('active', isFr);
+                if (enBtn) enBtn.classList.toggle('active', !isFr);
+            });
+        }
+
         function switchLang(lang) {
             currentLang = lang;
             localStorage.setItem('montLodgeLang', lang);
-            document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            const btnFrMobile = document.getElementById('btn-fr-mobile');
-            const btnEnMobile = document.getElementById('btn-en-mobile');
-            if (btnFrMobile) btnFrMobile.classList.toggle('active', lang === 'fr');
-            if (btnEnMobile) btnEnMobile.classList.toggle('active', lang === 'en');
+            syncAllLangToggles(lang);
 
             document.querySelectorAll('[data-fr]').forEach(el => {
                 if (el.getAttribute('data-fr') && el.getAttribute('data-en')) {
